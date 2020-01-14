@@ -1,16 +1,5 @@
 
---[[minetest.register_abm({
-    label = "Cherry Sapling Sprout",
-    nodenames = {"group:old_expansion_sapling"},
-    neighbors = {"air"},
-    interval = 240,
-    chance = 0.7,
-    action = function(pos, node)
-				local pos = {x=pos.x-2,y=pos.y,z=pos.z-2}
-				minetest.remove_node(pos)
-		minetest.place_schematic(pos,old_expansion.treeschem_randomizer(),0,_,true)
-    end
-})]]
+--[[
 minetest.register_abm({
     label = "Fruit Pod Grow",
     nodenames = {"old_expansion:pod","old_expansion:pod2","old_expansion:pod3"},
@@ -33,303 +22,144 @@ minetest.register_abm({
 
     end
 })
+]]
 
 
+--old_expansion.schems.schemATICS
 
---SCHEMATICS
+local n1 = { name = "air"}
+local n2 = { name = "old_expansion:pod"}
+local n3 = { name = "old_expansion:leaves1" }
+local n4 = { name = "old_expansion:log_paperbark"}
 
-schem_Tree_ac = {
-	yslice_prob = {
-		
-	},
+old_expansion.schems.schem_poplar = {
 	size = {
-		y = 7,
-		x = 6,
-		z = 6
-	}
-,
-	data = {
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, 
-{name = "old_expansion:leaves1"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, 
-{name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:log_paperbark"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:log_paperbark"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, 
-{name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, 
-{name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:pod"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-
-}
-}
-
-
--- Tree Variant 1
-schem_Treev1_ac = {
-	yslice_prob = {
-		
-	},
-	size = {
-		y = 7,
+		y = 8,
 		x = 5,
 		z = 5
 	}
 ,
 	data = {
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:log_paperbark"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:log_paperbark"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
+n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, 
+n2, n1, n1, n1, n2, n3, n2, n1, n1, n3, n3, n3, n1, n1, n1, n3, n1, 
+n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, 
+n1, n2, n1, n1, n1, n2, n3, n2, n1, n2, n3, n3, n3, n2, n3, n3, n3, 
+n3, n3, n1, n3, n3, n3, n1, n1, n1, n3, n1, n1, n1, n1, n4, n1, n1, 
+n1, n1, n4, n1, n1, n1, n2, n4, n2, n1, n2, n3, n4, n3, n2, n3, n3, 
+n3, n3, n3, n3, n3, n3, n3, n3, n3, n3, n3, n3, n3, n1, n3, n1, n3, 
+n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n2, n1, n1, n1, 
+n2, n3, n2, n1, n2, n3, n3, n3, n2, n3, n3, n3, n3, n3, n1, n3, n3, 
+n3, n1, n1, n1, n3, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, 
+n1, n1, n1, n1, n1, n1, n1, n2, n1, n1, n1, n2, n3, n2, n1, n1, n3, 
+n3, n3, n1, n1, n1, n3, n1, n1, n1, n1, n1, n1, n1, 
 
 }
 }
--- Tree Variant 2
-schem_Treev2_ac = {
+minetest.register_schematic(old_expansion.schems.schem_poplar)
+
+
+
+local n1 = { name = "air", prob = 0 }
+local n2 = { name = "old_expansion:pod" }
+local n3 = { name = "old_expansion:leaves1" }
+local n4 = { name = "old_expansion:log_paperbark" }
+local n5 = { name = "old_expansion:log_paperbark", param2 = 3 }
+local n6 = { name = "old_expansion:log_paperbark", param2 = 1 }
+local n7 = { name = "old_expansion:log_paperbark", param2 = 2 }
+
+old_expansion.schems.schem_trop = {
 	yslice_prob = {
 		
 	},
 	size = {
-		y = 7,
+		y = 8,
 		x = 5,
 		z = 5
 	}
 ,
 	data = {
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:log_paperbark"}, {name = "old_expansion:pod"}, {name = "air"}, 
-{name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:log_paperbark"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, 
-{name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
+n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n2, 
+n1, n2, n1, n1, n3, n2, n3, n1, n1, n1, n3, n3, n1, n1, n1, n1, n1, 
+n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n2, 
+n2, n1, n1, n1, n3, n3, n1, n1, n1, n1, n3, n4, n2, n1, n1, n3, n3, 
+n3, n1, n1, n1, n2, n1, n1, n1, n1, n3, n1, n1, n1, n1, n5, n1, n1, 
+n1, n1, n5, n1, n1, n1, n1, n5, n1, n1, n2, n6, n5, n2, n1, n3, n3, 
+n7, n3, n1, n1, n3, n3, n3, n1, n1, n2, n3, n2, n1, n1, n3, n3, n3, 
+n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n2, n2, n1, n1, n1, n3, 
+n3, n1, n2, n1, n3, n3, n7, n3, n1, n1, n3, n3, n3, n1, n1, n1, n2, 
+n1, n1, n1, n1, n3, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, 
+n1, n1, n1, n1, n1, n1, n2, n1, n2, n1, n1, n3, n2, n3, n1, n1, n3, 
+n3, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, 
+}
+}
+minetest.register_schematic(old_expansion.schems.schem_trop)
 
-}
-}
--- Tree Variant 3
-schem_Treev3_ac = {
+local n1 = { name = "air", prob = 0 }
+local n2 = { name = "old_expansion:pod" }
+local n3 = { name = "old_expansion:leaves1" }
+local n4 = { name = "old_expansion:log_paperbark", param2 = 3 }
+local n5 = { name = "old_expansion:log_paperbark", param2 = 2 }
+
+old_expansion.schems.schem_conif = {
 	yslice_prob = {
 		
 	},
 	size = {
-		y = 7,
+		y = 8,
 		x = 5,
 		z = 5
 	}
 ,
 	data = {
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:log_paperbark"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, 
-{name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:log_paperbark"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, 
-{name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves1"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
+n1, n1, n1, n1, n1, n1, n1, n2, n1, n1, n1, n1, n3, n1, n1, n1, n1, 
+n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, 
+n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n2, n2, n2, n1, n1, 
+n3, n3, n3, n1, n1, n3, n3, n3, n1, n1, n1, n3, n1, n1, n1, n1, n3, 
+n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n4, n1, n1, 
+n2, n2, n4, n2, n2, n3, n3, n4, n3, n3, n1, n3, n4, n3, n1, n1, n3, 
+n5, n3, n1, n1, n3, n3, n3, n1, n1, n1, n3, n1, n1, n1, n1, n3, n1, 
+n1, n1, n1, n1, n1, n1, n1, n2, n2, n2, n1, n1, n3, n3, n3, n1, n1, 
+n3, n3, n3, n1, n1, n1, n3, n1, n1, n1, n1, n3, n1, n1, n1, n1, n1, 
+n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n2, n1, n1, 
+n1, n1, n3, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, 
+n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, 
+	}
+}
+minetest.register_schematic(old_expansion.schems.schem_conif)
 
-}
-}
-schem_Treev1_as = {
+
+local n1 = { name = "air", prob = 0 }
+local n2 = { name = "old_expansion:pod" }
+local n3 = { name = "old_expansion:leaves1" }
+local n4 = { name = "old_expansion:log_paperbark" }
+local n5 = { name = "old_expansion:log_paperbark", param2 = 3 }
+local n6 = { name = "old_expansion:log_paperbark", param2 = 1 }
+local n7 = { name = "old_expansion:log_paperbark", param2 = 2 }
+
+old_expansion.schems.schem_will = {
 	yslice_prob = {
 		
 	},
 	size = {
-		y = 7,
+		y = 8,
 		x = 5,
 		z = 5
 	}
 ,
 	data = {
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves3"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:log_paperbark"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:log_paperbark"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
+n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n2, 
+n2, n2, n1, n1, n3, n3, n3, n1, n1, n1, n3, n1, n1, n1, n1, n1, n1, 
+n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n2, n2, n1, n1, n1, n3, 
+n3, n2, n1, n1, n1, n2, n3, n2, n2, n1, n3, n4, n3, n3, n1, n2, n3, 
+n3, n1, n1, n3, n3, n1, n1, n1, n1, n3, n1, n1, n1, n1, n5, n1, n1, 
+n1, n1, n5, n1, n1, n6, n6, n5, n1, n1, n3, n3, n5, n1, n1, n1, n3, 
+n7, n4, n5, n2, n3, n7, n3, n3, n3, n3, n3, n2, n1, n1, n3, n3, n3, 
+n1, n1, n1, n1, n1, n1, n2, n2, n1, n1, n1, n3, n3, n2, n1, n1, n1, 
+n1, n3, n2, n2, n1, n2, n1, n3, n3, n1, n3, n7, n3, n1, n1, n1, n3, 
+n3, n1, n1, n1, n3, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, 
+n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n1, n2, n1, n2, n1, n1, n3, 
+n7, n3, n1, n1, n1, n3, n1, n1, n1, n1, n1, n1, n1, 
 
 }
 }
-schem_Treev2_as = {
-	yslice_prob = {
-		
-	},
-	size = {
-		y = 7,
-		x = 5,
-		z = 5
-	}
-,
-	data = {
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:log_paperbark"}, {name = "old_expansion:pod"}, {name = "air"}, 
-{name = "old_expansion:pod"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:log_paperbark"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, 
-{name = "air"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-
-}
-}
-schem_Treev3_as = {
-	yslice_prob = {
-		
-	},
-	size = {
-		y = 7,
-		x = 5,
-		z = 5
-	}
-,
-	data = {
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_paperbark"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:log_paperbark"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, 
-{name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:log_paperbark"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, 
-{name = "air"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves3"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-
-}
-}
-
-schem_Tree_oa = {
-	yslice_prob = {
-		
-	},
-	size = {
-		y = 7,
-		x = 6,
-		z = 6
-	}
-,
-	data = {
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, 
-{name = "old_expansion:leaves2"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, 
-{name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_cinnamon"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_cinnamon"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:log_cinnamon"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:log_cinnamon"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, 
-{name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, 
-{name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:pod"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-
-}
-}
-
-
-
--- Tree Variant 1
-schem_Treev1_oa = {
-	yslice_prob = {
-		
-	},
-	size = {
-		y = 7,
-		x = 5,
-		z = 5
-	}
-,
-	data = {
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_cinnamon"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_cinnamon"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_cinnamon"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:log_cinnamon"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:log_cinnamon"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-
-}
-}
--- Tree Variant 2
-schem_Treev2_oa = {
-	yslice_prob = {
-		
-	},
-	size = {
-		y = 7,
-		x = 5,
-		z = 5
-	}
-,
-	data = {
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_cinnamon"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_cinnamon"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:log_cinnamon"}, {name = "old_expansion:pod"}, {name = "air"}, 
-{name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:log_cinnamon"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:pod"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, 
-{name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-
-}
-}
--- Tree Variant 3
-schem_Treev3_oa = {
-	yslice_prob = {
-		
-	},
-	size = {
-		y = 7,
-		x = 5,
-		z = 5
-	}
-,
-	data = {
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "air"}, {name = "air"}, 
-{name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_cinnamon"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:log_cinnamon"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:log_cinnamon"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, 
-{name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:log_cinnamon"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, {name = "old_expansion:pod"}, 
-{name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:pod"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "old_expansion:leaves2"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-{name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, {name = "air"}, 
-
-}
-}
+minetest.register_schematic(old_expansion.schems.schem_will)

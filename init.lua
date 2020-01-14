@@ -4,10 +4,11 @@ local thismod = minetest.get_current_modname()
 local modpath = minetest.get_modpath(thismod)
 
 old_expansion = {
-    growthSources = {}
+    growthSources = {},
+    schems = {}
 }
-old_expansion.growthSources.names = {"default:dirt", "default:dirt_with_grass", "default:water_source", "default:water_flowing"}
-old_expansion.growthSources.values = {4, 2, 4, 3}
+old_expansion.growthSources.names = {"default:dirt", "default:dirt_with_grass", "default:water_source", "default:water_flowing", "default:ice"}
+old_expansion.growthSources.values = {4, 2, 4, 3, -6,}
 
 
 

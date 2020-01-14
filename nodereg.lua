@@ -18,7 +18,11 @@ minetest.register_node("old_expansion:leaves"..n, {
     tiles = {
 		"leaves"..n..".png"
 	},
-	paramtype = "light"
+	paramtype = "light",
+	groups = {cracky = 6, oddly_breakable_by_hand = 3},
+	on_punch = function(pos)
+	minetest.remove_node(pos)
+	end
 })
 end
 minetest.register_node("old_expansion:vine", {
@@ -136,7 +140,11 @@ minetest.register_node("old_expansion:pod", {
 			{-0.0625, 0.4375, -0.1875, 0, 0.5, 0.0625}
 		}
     },
-    groups = {oddly_breakable_by_hand = 10}
+	groups = {cracky = 6,oddly_breakable_by_hand = 6},
+	on_punch = function(pos)
+	local meta = minetest.get_meta(pos)
+	minetest.chat_send_all(meta:get_string("type"))
+	end
 })
 minetest.register_node("old_expansion:pod2", {
 	tiles = {
@@ -223,14 +231,33 @@ for k,v in ipairs(fruit_names)do
 		end,
 		on_timer = function(pos)
 			local t = { mself = minetest.get_meta(pos), neigh = {}, area = {{x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},{x = pos.x + 2, y = pos.y - 1, z = pos.z + 2}}}
-			
-			for n = 1, #old_expansion.growthSources.names, 1 do
-			
-				local sources = minetest.find_nodes_in_area(t.area[1], t.area[2], old_expansion.growthSources.names[n])
-				if(type(sources) == "table" and #sources >= 1)then
-				t.mself:set_int("growthlev", t.mself:get_int("growthlev") + (#sources*n))
+			if(t.mself:get_int("growthlev") >= 0)then
+
+				for n = 1, #old_expansion.growthSources.names, 1 do -- Incrementally add integers to meta growth level based on proximal nodes.
+				
+					local sources = minetest.find_nodes_in_area(t.area[1], t.area[2], old_expansion.growthSources.names[n])
+					if(type(sources) == "table" and #sources >= 1)then
+					t.mself:set_int("growthlev", t.mself:get_int("growthlev") + (#sources*old_expansion.growthSources.values[n]))
+					else end
+				end
+			else minetest.set_node(pos, {name = "old_expansion:sapling_dead"}) end -- Replace with dead sapling if growth falls below 0
+
+			--Sprouting and pod assignment
+
+			if(t.mself:get_int("growthlev") >= 130)then -- Full tree growth
+				minetest.remove_node(pos)
+				minetest.place_schematic({x = pos.x - 2, y = pos.y, z = pos.z - 2},old_expansion.tree_rand(),"random",_,false)
+				local pods = minetest.find_nodes_in_area({x = pos.x - 2, y = pos.y, z = pos.z - 2},{x = pos.x + 2, y = pos.y + 7, z = pos.z + 2}, {"old_expansion:pod"})
+				
+				if(type(pods) == "table" and #pods > 0)then
+					for n = 1, #pods, 1 do
+					local meta = minetest.get_meta(pods[n])
+					if(meta:get_string("type") == "")then
+						meta:set_string("type", v)
+					else end
+				end
 				else end
-			end
+			else end
 			minetest.chat_send_all(t.mself:get_int("growthlev"))
 			local timer = minetest.get_node_timer(pos)
 			timer:start(6)
@@ -404,4 +431,10 @@ minetest.register_node("old_expansion:dirt_culinary_dried",{
 	drawtype = "nodebox",
 	node_box = old_expansion_dirtbars_tabs[3],
 	drop = "old_expansion:dirt_bar"
+})
+
+minetest.register_node("old_expansion:sapling_dead",{
+	drawtype = "plantlike",
+	tiles = {"sapling_dead.png"},
+	groups = {oddly_breakable_by_hand = 1}
 })

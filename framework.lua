@@ -1,5 +1,5 @@
 
-food_expansion.particles_leafdrop = function(pos)
+old_expansion.particles_leafdrop = function(pos)
     minetest.add_particlespawner({
         amount = 6,
         time = 3,
@@ -30,10 +30,10 @@ food_expansion.particles_leafdrop = function(pos)
     })
 end
 --  --  --  --  --  --  --  UTIL    --  --  --  --  --  --  --  
---[[food_expansion.clear_metas = function()
+--[[old_expansion.clear_metas = function()
 end]]
 
-food_expansion.treeschem_randomizer = function()
+old_expansion.treeschem_randomizer = function()
         math.random(); math.random(); math.random()
         local num = math.random(135)
         local s = ""
@@ -64,41 +64,41 @@ food_expansion.treeschem_randomizer = function()
         end
         return s
     end
---[[food_expansion.fruitpod_randomizer = function()
+--[[old_expansion.fruitpod_randomizer = function()
         math.random(); math.random(); math.random()
         local num = math.random(135)
         local s = ""
         if(num >=1 and num <=8 )then
-            s = "food_expansion:fruit_almond"
+            s = "old_expansion:fruit_almond"
         elseif(num >=9 and num <=21 )then
-            s = "food_expansion:fruit_dragonfruit"
+            s = "old_expansion:fruit_dragonfruit"
         elseif(num >=22 and num <=30 )then
-            s = "food_expansion:fruit_peach"
+            s = "old_expansion:fruit_peach"
         elseif(num >=31 and num <= 35) then
-            s = "food_expansion:fruit_pear"
+            s = "old_expansion:fruit_pear"
         elseif(num >=36 and num <=40 )then
-            s = "food_expansion:fruit_pomegranate"
+            s = "old_expansion:fruit_pomegranate"
         elseif(num >=41 and num <=50 )then
-            s = "food_expansion:fruit_persimmon"
+            s = "old_expansion:fruit_persimmon"
         elseif(num >=51 and num <=59 )then
-            s = "food_expansion:fruit_date"
+            s = "old_expansion:fruit_date"
         elseif(num >=60 and num <= 65) then
-            s = "food_expansion:fruit_fig"
+            s = "old_expansion:fruit_fig"
         elseif(num >=66 and num <=78 )then
-            s = "food_expansion:fruit_orange"
+            s = "old_expansion:fruit_orange"
         elseif(num >=79 and num <=89 )then
-            s = "food_expansion:fruit_breadfruit"
+            s = "old_expansion:fruit_breadfruit"
         elseif(num >=90 and num <=100 )then
-            s = "food_expansion:fruit_cashew"
+            s = "old_expansion:fruit_cashew"
         elseif(num >=101 and num <= 135) then
-            s = "food_expansion:fruit_banana"
+            s = "old_expansion:fruit_banana"
         end
         return s
     end]]
---[[food_expansion.treepod_assignment = function(pos,type,stage)
+--[[old_expansion.treepod_assignment = function(pos,type,stage)
     local pseudo_deva = {}
     local n = 4
-    local deva = minetest.find_nodes_in_area(pos,{x=pos.x+n,y=pos.y+7,z=pos.z+n},{name="food_expansion:pod"})
+    local deva = minetest.find_nodes_in_area(pos,{x=pos.x+n,y=pos.y+7,z=pos.z+n},{name="old_expansion:pod"})
     minetest.chat_send_all(#deva)
     for k,v in ipairs(deva) do
         local meta = minetest.get_meta(pos)
@@ -108,7 +108,7 @@ food_expansion.treeschem_randomizer = function()
     end
     
 end]]
---[[food_expansion.ibundle = function(array,order) --Function for bundling arrays into smaller arrays based on a single 
+--[[old_expansion.ibundle = function(array,order) --Function for bundling arrays into smaller arrays based on a single 
 --integer specifying the size of child arrays
 local peck = {}
 local bushel = {}

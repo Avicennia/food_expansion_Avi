@@ -230,7 +230,19 @@ for k,v in ipairs(fruit_names)do
 		timer:start(6)
 		end,
 		on_timer = function(pos)
-			local t = { mself = minetest.get_meta(pos), neigh = {}, area = {{x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},{x = pos.x + 2, y = pos.y - 1, z = pos.z + 2}}}
+			local t = { mself = minetest.get_meta(pos), below = { x= pos.x, y = pos.y - 1, z = pos.z}, neigh = {}, area = {{x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},{x = pos.x + 2, y = pos.y - 1, z = pos.z + 2}}}
+			local name = minetest.get_node(t.below).name
+
+
+			for n = 1, #old_expansion.growNodes, 1 do -- Check to ensure that supporting node is a valid growth node.
+			
+			if(name == old_expansion.growNodes[n])then
+				name = true
+			else end
+			end
+
+			if(name == true)then
+
 			if(t.mself:get_int("growthlev") >= 0)then
 
 				for n = 1, #old_expansion.growthSources.names, 1 do -- Incrementally add integers to meta growth level based on proximal nodes.
@@ -261,6 +273,7 @@ for k,v in ipairs(fruit_names)do
 			minetest.chat_send_all(t.mself:get_int("growthlev"))
 			local timer = minetest.get_node_timer(pos)
 			timer:start(6)
+		else end
 		end
 
     })

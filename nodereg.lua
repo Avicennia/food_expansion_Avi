@@ -122,14 +122,7 @@ minetest.register_node("old_expansion:log_2_heart", {
 ---------------------------------------PODS
 
 minetest.register_node("old_expansion:pod", {
-	tiles = {
-		"wls_podtex.png",
-		"wls_podtex.png",
-		"wls_podtex.png",
-		"wls_podtex.png",
-		"wls_podtex.png",
-		"wls_podtex.png"
-	},
+	tiles = {"wls_podtex.png",},
     drawtype = "nodebox",
     waving = 2,
 	paramtype = "light",
@@ -147,14 +140,7 @@ minetest.register_node("old_expansion:pod", {
 	end
 })
 minetest.register_node("old_expansion:pod2", {
-	tiles = {
-		"wls_podtex.png",
-		"wls_podtex.png",
-		"wls_podtex.png",
-		"wls_podtex.png",
-		"wls_podtex.png",
-		"wls_podtex.png"
-	},
+	tiles = {"wls_podtex.png",},
     drawtype = "nodebox",
 	waving = 2,
 	paramtype = "light",
@@ -168,14 +154,7 @@ minetest.register_node("old_expansion:pod2", {
     groups = {oddly_breakable_by_hand = 10}
 })
 minetest.register_node("old_expansion:pod3", {
-	tiles = {
-		"wls_podtex.png",
-		"wls_podtex.png",
-		"wls_podtex.png",
-		"wls_podtex.png",
-		"wls_podtex.png",
-		"wls_podtex.png"
-	},
+	tiles = {"wls_podtex.png",},
     drawtype = "nodebox",
     waving = 2,
 	paramtype = "light",
@@ -202,12 +181,13 @@ for k,v in ipairs(fruit_names)do
         is_ground_content = true,
 		groups = {choppy=3,oddly_breakable_by_hand = 1, old_expansion_fruit = 2},
 		on_punch = function(pos, node, puncher, pointed_thing)
-			if(node.name == "old_expansion:fruit_orange") then 
+			local meta = minetest.get_meta(pos)
+			local type = meta:get_string("type")
 				minetest.set_node(pos, {name = "old_expansion:pod"})
+				meta:set_string("type",type)
 				pos.y = pos.y - 0.2;
-				minetest.add_item(pos,{name="old_expansion:fruit_orange", count = 3})
-			else
-			end
+				minetest.add_item(pos,{name="old_expansion:fruit_"..type, count = 3})
+		
 		end
 	})
 
@@ -260,7 +240,12 @@ for k,v in ipairs(fruit_names)do
 				minetest.remove_node(pos)
 				minetest.place_schematic({x = pos.x - 2, y = pos.y, z = pos.z - 2},old_expansion.tree_rand(),"random",_,false)
 				local pods = minetest.find_nodes_in_area({x = pos.x - 2, y = pos.y, z = pos.z - 2},{x = pos.x + 2, y = pos.y + 7, z = pos.z + 2}, {"old_expansion:pod"})
-				
+				local trunk = minetest.find_nodes_in_area({x = pos.x - 2, y = pos.y, z = pos.z - 2},{x = pos.x + 2, y = pos.y + 7, z = pos.z + 2}, {"old_expansion:log_paperbark"})
+				if(#trunk > 2 and math.random(100) > 49)then
+					for o = 1, #trunk, 1 do
+						minetest.set_node(trunk[o], {name = "old_expansion:log_cinnamon"})
+					end
+				end
 				if(type(pods) == "table" and #pods > 0)then
 					for n = 1, #pods, 1 do
 					local meta = minetest.get_meta(pods[n])
@@ -349,31 +334,21 @@ minetest.register_node("old_expansion:gardenwindy", {
         minetest.chat_send_all(#fruit_names)
     end
 })
-minetest.register_node("old_expansion:log_paperbark", {
+for n = 1, #old_expansion.types.logs, 1 do
+minetest.register_node("old_expansion:log_"..old_expansion.types.logs[n], {
     description = "Bananas",
-    tiles = {"log_paperbark.png"},
+    tiles = {"log_"..old_expansion.types.logs[n]..".png"},
     waving = 1,
     paramtype = "light",
     paramtype2 = "facedir",
     is_ground_content = true,
-    groups = {cracky=3, stone=1,oddly_breakable_by_hand = 1},
+    groups = {cracky=3, stone=1,oddly_breakable_by_hand = 1, fe_plant_live = 1},
     on_punch = function(pos, pointed_thing)
-        
+		local meta = minetest.get_meta(pos)
+		minetest.chat_send_all(meta:get_string("vstate"))
     end
 })
-minetest.register_node("old_expansion:log_cinnamon", {
-    description = "Bananas",
-    tiles = {"log_cinnamon.png"},
-    waving = 1,
-    paramtype = "light",
-    paramtype2 = "facedir",
-    is_ground_content = true,
-    groups = {cracky=3, stone=1,oddly_breakable_by_hand = 1},
-    on_punch = function(pos, pointed_thing)
-        
-    end
-})
-
+end
 
 minetest.register_node("old_expansion:meshy", {
     drawtype = "mesh",

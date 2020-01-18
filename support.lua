@@ -1,28 +1,61 @@
 
---[[
+
 minetest.register_abm({
     label = "Fruit Pod Grow",
     nodenames = {"old_expansion:pod","old_expansion:pod2","old_expansion:pod3"},
     neighbors = {"air"},
-    interval = 60,
+    interval = 7,
     chance = 0.5,
 	action = function(pos, node)
 		local meta = minetest.get_meta(pos)
-	  if(node.name == "old_expansion:pod")then
-		minetest.set_node(pos,{name="old_expansion:pod2"})
-		old_expansion.particles_leafdrop(pos)
-	  elseif(node.name == "old_expansion:pod2")then
-		minetest.set_node(pos,{name="old_expansion:pod3"})
-		old_expansion.particles_leafdrop(pos)
-	  elseif(node.name == "old_expansion:pod3")then
-		minetest.set_node(pos,{name = "old_expansion:fruit_orange"})
-		old_expansion.particles_leafdrop(pos)
-	  else return 0
-	  end
+		if(meta:get_string("type") ~= "")then
+			if(node.name == "old_expansion:pod")then
+				local type = meta:get_string("type")
+				minetest.set_node(pos,{name="old_expansion:pod2"})
+				meta:set_string("type",type)
+				old_expansion.particles_leafdrop(pos)
+			elseif(node.name == "old_expansion:pod2")then
+				local type = meta:get_string("type")
+				minetest.set_node(pos,{name="old_expansion:pod3"})
+				meta:set_string("type",type)
+				old_expansion.particles_leafdrop(pos)
+			elseif(node.name == "old_expansion:pod3")then
+				local type = meta:get_string("type")
+				minetest.set_node(pos,{name = "old_expansion:fruit_"..type})
+				meta:set_string("type",type)
+				old_expansion.particles_leafdrop(pos)
+			else return 
+			end
+	else minetest.remove_node(pos) end
 
     end
 })
-]]
+minetest.register_abm({
+    label = "Viability Creep",
+    nodenames = {"group:fe_plant_live"},
+    neighbors = {},
+    interval = 4,
+    chance = 1,
+	action = function(pos, node)
+		local name = node.name
+		if(name == "old_expansion:log_paperbark" or name == "old_expansion:log_cinnamon")then
+			pos.y = pos.y - 1;
+			local name = minetest.get_node(pos).name
+
+			for _,v in pairs(old_expansion.growNodes)do -- Search for viable growth nodes underneath
+				if(v == name)then
+					name = "growth"
+				else end
+			end
+			local meta = minetest.get_meta(pos)
+			if(name == "growth" or meta:get_string("vstate") == "viable")then
+				pos.y = pos.y + 1
+				local meta = minetest.get_meta(pos)
+				meta:set_string("vstate","viable")
+			else end
+		end
+    end
+})
 
 
 --old_expansion.schems.schemATICS
